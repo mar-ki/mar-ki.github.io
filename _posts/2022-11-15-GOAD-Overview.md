@@ -1,8 +1,8 @@
 ---
 title: GOAD - Overview 
-date: 2022-11-15 00:00:00
+date: 2022-11-14 18:00:00
 categories: [AD,GOAD]
-tags: []
+tags: [ad]
 ---
 ![PWNING](https://raw.githubusercontent.com/Orange-Cyberdefense/GOAD/main/docs/img/GOAD.png)
 
@@ -46,13 +46,13 @@ sudo docker run -ti --rm --network host -h goadansible -v $(pwd):/goad -w /goad/
 
 Grab a coffee and wait till your systems are up and running.
 
-#### Some Blueteam?
+### Some Blueteam?
 
 If you are interessted in following along the lab events you can enable the ELK stack.
 Btw. could also be used to check how noisy your methods are ;)
 
-* Elk will be deployed on http://192.168.56.50:5601
-* Log Encyclopedia can be found on https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/
+* Elk will be deployed on [192.168.56.50](http://192.168.56.50:5601)
+* Log Encyclopedia can be found on [Ultimate Windows Security](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/)
 
 Uncomment the ELK Part in Vagrantfile
 
