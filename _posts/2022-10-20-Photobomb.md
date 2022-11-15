@@ -5,15 +5,11 @@ categories: [HTB,CTF]
 tags: [weakpw,commandinjection,sudo]
 ---
 
-# Photobomb 
 ## Summary
 
 We are going to exploit Photobomb on Hackthebox.
 After we inspected the Application we will find out that the Credentials for the enpoint `/printer` are leaked in a java script file.
 To get a foothold we will exploit a command injection vulnerability in the image processor and escalate to root using sudo.
-
-URL: https://app.hackthebox.com/machines/Photobomb
-Rating: Easy
 
 ## Enumeration
 
@@ -67,8 +63,8 @@ Let's see if we can find any interesting files using feroxbuster
 
 ### Website and Files
 
-When we visit the site http://photobomb.htb we are greeted with a message that we have to click to get started. The credentials are in our welcome pack according to the site.
-Since we haven't received a "welcome pack" and get asked for a username and password on http://photobomb.htb/printer we inspect the application more and check `photobomb.js`
+When we visit the site [http://photobomb.htb](http://photobomb.htb) we are greeted with a message that we have to click to get started. The credentials are in our welcome pack according to the site.
+Since we haven't received a "welcome pack" and get asked for a username and password on [http://photobomb.htb/printer](http://photobomb.htb/printer) we inspect the application more and check `photobomb.js`
 
 #### photobomb.js
 
@@ -89,7 +85,7 @@ window.onload = init;
 
 #### /printer
 
-On visiting http://photobomb.htb there's not much to discover except some images that we can select, setting the file type, a resolution and a buttong to download photo to print.
+On visiting [http://photobomb.htb/printer](http://photobomb.htb/printer) there's not much to discover except some images that we can select, setting the file type, a resolution and a buttong to download photo to print.
 That's exactly what happens when we select an image and hit `Download photo to print`, after some time we are able to download a file.
 
 ## Exploitation
