@@ -57,9 +57,9 @@ cme smb ./hosts.txt -u 'Guest' -p '' --shares
 cme smb ./hosts.txt --gen-relay-list ./smb_relay.txt
 ```
 
-> Consider to generate the list based on infos we got at the **What's on the network** step
-> Just to save some events that could trigger detection
-> We're looking for: SMB Signing Disabled
+> Consider to generate the list based on infos we got at the **What's on the network** step.  
+> Just to save some events that could trigger detection.  
+> We're looking for: SMB Signing Disabled  
 
 ## DC IPs
 
@@ -846,7 +846,7 @@ Forced Log off Time: Not Set
 ### Accessible Shares
 
 We discovered some shares that are accessible as anonymous user.
-Also helped to identify which system is running ACDS
+Also helped to identify which system is running ADCS
 
 ```bash
 192.168.56.22 [+] Enumerated shares
