@@ -2,7 +2,7 @@
 title: GOAD - Overview 
 date: 2022-11-14 18:00:00
 categories: [AD,GOAD]
-tags: [ad]
+tags: [goad]
 ---
 ![PWNING](https://raw.githubusercontent.com/Orange-Cyberdefense/GOAD/main/docs/img/GOAD.png)
 
