@@ -77,7 +77,7 @@ Start neo4j and [Bloodhound](https://github.com/BloodHoundAD/BloodHound)
 ```bash
 sudo neo4j start
 # --disable-gpu-sandbox should fix a bug when Bloodhound isn't starting
-.jon/BloodHound --disable-gpu-sandbox
+./BloodHound --disable-gpu-sandbox
 ```
 
 ## Findings
