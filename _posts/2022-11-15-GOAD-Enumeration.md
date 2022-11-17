@@ -1,6 +1,6 @@
 ---
 title: GOAD - Digging Deeper 
-date: 2021-08-08 12:00:00
+date: 2022-11-16 12:00:00
 categories: [AD,GOAD]
 tags: [goad]
 ---
