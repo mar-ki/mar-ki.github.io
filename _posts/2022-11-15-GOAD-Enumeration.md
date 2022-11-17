@@ -7,7 +7,9 @@ tags: [goad]
 
 # Description
 
-In this section we will go over some basic active directory enumeration methods which are also documented in the famous [Pentesting Active Directory Mind Map](https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2022_11.svg)
+In this section we will go over some basic active directory enumeration methods which are also documented in the famous [Pentesting Active Directory Mind Map](https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2022_11.svg)  
+
+For setup instructions or a general overview visit [GOAD - Overview](https://blog.kindel.it/posts/GOAD-Overview/)
 
 # Target
 
@@ -198,59 +200,9 @@ PORT      STATE SERVICE       REASON          VERSION
 3268/tcp  open  ldap          syn-ack ttl 128 Microsoft Windows Active Directory LDAP (Domain: sevenkingdoms.local0., Site: Default-First-Site-Name)
 3269/tcp  open  tcpwrapped    syn-ack ttl 128
 3389/tcp  open  ms-wbt-server syn-ack ttl 128 Microsoft Terminal Services
-| rdp-ntlm-info: 
-|   Target_Name: SEVENKINGDOMS
-|   NetBIOS_Domain_Name: SEVENKINGDOMS
-|   NetBIOS_Computer_Name: KINGSLANDING
-|   DNS_Domain_Name: sevenkingdoms.local
-|   DNS_Computer_Name: kingslanding.sevenkingdoms.local
-|   DNS_Tree_Name: sevenkingdoms.local
-|   Product_Version: 10.0.17763
-|_  System_Time: 2022-11-15T22:21:43+00:00
-| ssl-cert: Subject: commonName=kingslanding.sevenkingdoms.local
-| Issuer: commonName=kingslanding.sevenkingdoms.local
-| Public Key type: rsa
-| Public Key bits: 2048
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T23:31:11
-| Not valid after:  2023-05-15T23:31:11
-| MD5:   54c4 7b3b 1705 9f7e ba03 1101 696d 85bb
-| SHA-1: a03b cbe2 d89b 672c 5676 c89b 874f 6870 984d 9ffc
-|_ssl-date: 2022-11-15T22:22:22+00:00; 0s from scanner time.
-5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-| ssl-cert: Subject: commonName=VAGRANT
-| Subject Alternative Name: DNS:VAGRANT, DNS:vagrant
-| Issuer: commonName=VAGRANT
-| Public Key type: rsa
-| Public Key bits: 4096
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T14:35:11
-| Not valid after:  2025-11-12T14:35:11
-| MD5:   f97b 5742 8c7a 9aa8 7b04 9a9e 7b97 341c
-| SHA-1: 74a9 6154 7c74 177b 353b db08 839b b53d b54e 64e5
-|_ssl-date: 2022-11-15T22:22:22+00:00; 0s from scanner time.
-| tls-alpn: 
-|_  http/1.1
+5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
+5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
 9389/tcp  open  mc-nmf        syn-ack ttl 128 .NET Message Framing
-49666/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49668/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49669/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49672/tcp open  ncacn_http    syn-ack ttl 128 Microsoft Windows RPC over HTTP 1.0
-49673/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49676/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49728/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49756/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port53-TCP:V=7.80%I=7%D=11/15%Time=63741074%P=x86_64-pc-linux-gnu%r(DNS
-SF:VersionBindReqTCP,20,"\0\x1e\0\x06\x81\x04\0\x01\0\0\0\0\0\0\x07version
-SF:\x04bind\0\0\x10\0\x03");
-MAC Address: 08:00:27:12:E1:71 (Oracle VirtualBox virtual NIC)
-Service Info: Host: KINGSLANDING; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Host script results:
 |_clock-skew: mean: 0s, deviation: 0s, median: 0s
@@ -265,19 +217,9 @@ Host script results:
 |   08 00 27 12 e1 71 00 00 00 00 00 00 00 00 00 00 00
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 |_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
-| p2p-conficker: 
-|   Checking for Conficker.C or higher...
-|   Check 1 (port 41826/tcp): CLEAN (Timeout)
-|   Check 2 (port 62115/tcp): CLEAN (Timeout)
-|   Check 3 (port 39390/udp): CLEAN (Timeout)
-|   Check 4 (port 61517/udp): CLEAN (Timeout)
-|_  0/4 checks are positive: Host is CLEAN or ports are blocked
 | smb2-security-mode: 
 |   2.02: 
 |_    Message signing enabled and required
-| smb2-time: 
-|   date: 2022-11-15T22:21:43
-|_  start_date: N/A
 ```
 
 ### 192.168.56.11
@@ -300,58 +242,9 @@ PORT      STATE SERVICE       REASON          VERSION
 3268/tcp  open  ldap          syn-ack ttl 128 Microsoft Windows Active Directory LDAP (Domain: sevenkingdoms.local0., Site: Default-First-Site-Name)
 3269/tcp  open  tcpwrapped    syn-ack ttl 128
 3389/tcp  open  ms-wbt-server syn-ack ttl 128 Microsoft Terminal Services
-| rdp-ntlm-info: 
-|   Target_Name: NORTH
-|   NetBIOS_Domain_Name: NORTH
-|   NetBIOS_Computer_Name: WINTERFELL
-|   DNS_Domain_Name: north.sevenkingdoms.local
-|   DNS_Computer_Name: winterfell.north.sevenkingdoms.local
-|   DNS_Tree_Name: sevenkingdoms.local
-|   Product_Version: 10.0.17763
-|_  System_Time: 2022-11-15T22:26:27+00:00
-| ssl-cert: Subject: commonName=winterfell.north.sevenkingdoms.local
-| Issuer: commonName=winterfell.north.sevenkingdoms.local
-| Public Key type: rsa
-| Public Key bits: 2048
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T23:40:52
-| Not valid after:  2023-05-15T23:40:52
-| MD5:   d07c 42a0 b403 bb2d 9c12 be51 6c4f a994
-| SHA-1: 422d 9d49 f721 c5cc 67c6 1188 3146 0e40 eb90 acd9
-|_ssl-date: 2022-11-15T22:27:06+00:00; 0s from scanner time.
-5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-| ssl-cert: Subject: commonName=VAGRANT
-| Subject Alternative Name: DNS:VAGRANT, DNS:vagrant
-| Issuer: commonName=VAGRANT
-| Public Key type: rsa
-| Public Key bits: 4096
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T14:38:15
-| Not valid after:  2025-11-12T14:38:15
-| MD5:   b6c4 673e fe75 84c0 a4e4 015e 528c 9d24
-| SHA-1: 5a49 4ec8 1610 2032 56ce dcb4 2cb8 54de e0ef d39c
-|_ssl-date: 2022-11-15T22:27:06+00:00; 0s from scanner time.
-| tls-alpn: 
-|_  http/1.1
+5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
+5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
 9389/tcp  open  mc-nmf        syn-ack ttl 128 .NET Message Framing
-49666/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49667/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49672/tcp open  ncacn_http    syn-ack ttl 128 Microsoft Windows RPC over HTTP 1.0
-49673/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49678/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49719/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-64738/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port53-TCP:V=7.80%I=7%D=11/15%Time=63741190%P=x86_64-pc-linux-gnu%r(DNS
-SF:VersionBindReqTCP,20,"\0\x1e\0\x06\x81\x04\0\x01\0\0\0\0\0\0\x07version
-SF:\x04bind\0\0\x10\0\x03");
-MAC Address: 08:00:27:B1:FA:7C (Oracle VirtualBox virtual NIC)
-Service Info: Host: WINTERFELL; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Host script results:
 |_clock-skew: mean: 0s, deviation: 0s, median: 0s
@@ -366,19 +259,9 @@ Host script results:
 |   08 00 27 b1 fa 7c 00 00 00 00 00 00 00 00 00 00 00
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 |_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
-| p2p-conficker: 
-|   Checking for Conficker.C or higher...
-|   Check 1 (port 50298/tcp): CLEAN (Timeout)
-|   Check 2 (port 37282/tcp): CLEAN (Timeout)
-|   Check 3 (port 38986/udp): CLEAN (Timeout)
-|   Check 4 (port 46743/udp): CLEAN (Timeout)
-|_  0/4 checks are positive: Host is CLEAN or ports are blocked
 | smb2-security-mode: 
 |   2.02: 
 |_    Message signing enabled and required
-| smb2-time: 
-|   date: 2022-11-15T22:26:26
-|_  start_date: N/A
 ```
 
 ### 192.168.56.12
@@ -401,59 +284,9 @@ PORT      STATE SERVICE       REASON          VERSION
 3268/tcp  open  ldap          syn-ack ttl 128 Microsoft Windows Active Directory LDAP (Domain: essos.local, Site: Default-First-Site-Name)
 3269/tcp  open  tcpwrapped    syn-ack ttl 128
 3389/tcp  open  ms-wbt-server syn-ack ttl 128 Microsoft Terminal Services
-| rdp-ntlm-info: 
-|   Target_Name: ESSOS
-|   NetBIOS_Domain_Name: ESSOS
-|   NetBIOS_Computer_Name: MEEREEN
-|   DNS_Domain_Name: essos.local
-|   DNS_Computer_Name: meereen.essos.local
-|   DNS_Tree_Name: essos.local
-|   Product_Version: 10.0.14393
-|_  System_Time: 2022-11-15T22:30:10+00:00
-| ssl-cert: Subject: commonName=meereen.essos.local
-| Issuer: commonName=meereen.essos.local
-| Public Key type: rsa
-| Public Key bits: 2048
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T23:31:11
-| Not valid after:  2023-05-15T23:31:11
-| MD5:   64dc a3a2 1f93 c985 0502 450f 3940 4853
-| SHA-1: 933c c38d 947d 7817 1316 efba e695 a798 875d 470a
-|_ssl-date: 2022-11-15T22:30:49+00:00; 0s from scanner time.
-5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-| ssl-cert: Subject: commonName=VAGRANT
-| Subject Alternative Name: DNS:VAGRANT, DNS:vagrant
-| Issuer: commonName=VAGRANT
-| Public Key type: rsa
-| Public Key bits: 4096
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T14:49:34
-| Not valid after:  2025-11-12T14:49:34
-| MD5:   cd47 0aa7 1f2e 33d6 e2fa 611f a5b6 49f2
-| SHA-1: 6d67 e78f 2a71 0529 5544 3e31 3510 41b3 0b62 16d9
-|_ssl-date: 2022-11-15T22:30:49+00:00; 0s from scanner time.
-| tls-alpn: 
-|   h2
-|_  http/1.1
+5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
+5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
 9389/tcp  open  mc-nmf        syn-ack ttl 128 .NET Message Framing
-49666/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49668/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49672/tcp open  ncacn_http    syn-ack ttl 128 Microsoft Windows RPC over HTTP 1.0
-49673/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49676/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49698/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-49705/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port53-TCP:V=7.80%I=7%D=11/15%Time=6374126F%P=x86_64-pc-linux-gnu%r(DNS
-SF:VersionBindReqTCP,20,"\0\x1e\0\x06\x81\x04\0\x01\0\0\0\0\0\0\x07version
-SF:\x04bind\0\0\x10\0\x03");
-MAC Address: 08:00:27:52:1E:6D (Oracle VirtualBox virtual NIC)
-Service Info: Host: MEEREEN; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Host script results:
 |_clock-skew: mean: 1h20m00s, deviation: 3h15m57s, median: 0s
@@ -468,13 +301,6 @@ Host script results:
 |   08 00 27 52 1e 6d 00 00 00 00 00 00 00 00 00 00 00
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 |_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
-| p2p-conficker: 
-|   Checking for Conficker.C or higher...
-|   Check 1 (port 56698/tcp): CLEAN (Timeout)
-|   Check 2 (port 12168/tcp): CLEAN (Timeout)
-|   Check 3 (port 32496/udp): CLEAN (Timeout)
-|   Check 4 (port 48602/udp): CLEAN (Timeout)
-|_  0/4 checks are positive: Host is CLEAN or ports are blocked
 | smb-os-discovery: 
 |   OS: Windows Server 2016 Standard Evaluation 14393 (Windows Server 2016 Standard Evaluation 6.3)
 |   Computer name: meereen
@@ -491,9 +317,6 @@ Host script results:
 | smb2-security-mode: 
 |   2.02: 
 |_    Message signing enabled and required
-| smb2-time: 
-|   date: 2022-11-15T22:30:09
-|_  start_date: 2022-11-15T19:06:4
 ```
 
 ### 192.168.56.22
@@ -505,7 +328,7 @@ PORT      STATE SERVICE       REASON          VERSION
 |   Supported Methods: OPTIONS TRACE GET HEAD POST
 |_  Potentially risky methods: TRACE
 |_http-server-header: Microsoft-IIS/10.0
-|_http-title: Site doesn't have a title (text/html).
+|_http-title: Site doesnt have a title (text/html).
 135/tcp   open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
 139/tcp   open  netbios-ssn   syn-ack ttl 128 Microsoft Windows netbios-ssn
 445/tcp   open  microsoft-ds? syn-ack ttl 128
@@ -529,48 +352,10 @@ PORT      STATE SERVICE       REASON          VERSION
 | SHA-1: 0d8e b7b8 614e 287c 4510 d582 12a5 b477 5f9c 07a2
 |_ssl-date: 2022-11-15T22:19:20+00:00; 0s from scanner time.
 3389/tcp  open  ms-wbt-server syn-ack ttl 128 Microsoft Terminal Services
-| rdp-ntlm-info: 
-|   Target_Name: NORTH
-|   NetBIOS_Domain_Name: NORTH
-|   NetBIOS_Computer_Name: CASTELBLACK
-|   DNS_Domain_Name: north.sevenkingdoms.local
-|   DNS_Computer_Name: castelblack.north.sevenkingdoms.local
-|   DNS_Tree_Name: sevenkingdoms.local
-|   Product_Version: 10.0.17763
-|_  System_Time: 2022-11-15T22:18:41+00:00
-| ssl-cert: Subject: commonName=castelblack.north.sevenkingdoms.local
-| Issuer: commonName=castelblack.north.sevenkingdoms.local
-| Public Key type: rsa
-| Public Key bits: 2048
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T23:48:01
-| Not valid after:  2023-05-15T23:48:01
-| MD5:   16ac a35c 07a7 3e68 bbca da2b 35de e44b
-| SHA-1: ad8d b459 20d5 9828 b52c df33 b0fd cc6f 7139 48a7
-|_ssl-date: 2022-11-15T22:19:20+00:00; 0s from scanner time.
-5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-| ssl-cert: Subject: commonName=VAGRANT
-| Subject Alternative Name: DNS:VAGRANT, DNS:vagrant
-| Issuer: commonName=VAGRANT
-| Public Key type: rsa
-| Public Key bits: 4096
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T15:01:56
-| Not valid after:  2025-11-12T15:01:56
-| MD5:   3452 70ea a847 5b16 e449 bfb2 90cb 8995
-| SHA-1: e215 f32f 58ec 2884 caa7 586b f7a3 f6e5 6d7b 824d
-|_ssl-date: 2022-11-15T22:19:20+00:00; 0s from scanner time.
-| tls-alpn: 
-|_  http/1.1
+5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
+5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
 49666/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
 49668/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-MAC Address: 08:00:27:B2:9B:F2 (Oracle VirtualBox virtual NIC)
-Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Host script results:
 |_clock-skew: mean: 0s, deviation: 0s, median: 0s
@@ -590,19 +375,9 @@ Host script results:
 |   08 00 27 b2 9b f2 00 00 00 00 00 00 00 00 00 00 00
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 |_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
-| p2p-conficker: 
-|   Checking for Conficker.C or higher...
-|   Check 1 (port 14258/tcp): CLEAN (Timeout)
-|   Check 2 (port 63105/tcp): CLEAN (Timeout)
-|   Check 3 (port 27598/udp): CLEAN (Timeout)
-|   Check 4 (port 4709/udp): CLEAN (Timeout)
-|_  0/4 checks are positive: Host is CLEAN or ports are blocked
 | smb2-security-mode: 
 |   2.02: 
 |_    Message signing enabled but not required
-| smb2-time: 
-|   date: 2022-11-15T22:18:41
-|_  start_date: N/A
 ```
 
 ### 192.168.56.23
@@ -638,50 +413,11 @@ PORT      STATE SERVICE       REASON          VERSION
 | SHA-1: 08af 5a95 9354 4bc0 c884 3115 f573 9d29 d137 5b18
 |_ssl-date: 2022-11-15T22:17:46+00:00; 0s from scanner time.
 3389/tcp  open  ms-wbt-server syn-ack ttl 128 Microsoft Terminal Services
-| rdp-ntlm-info: 
-|   Target_Name: ESSOS
-|   NetBIOS_Domain_Name: ESSOS
-|   NetBIOS_Computer_Name: BRAAVOS
-|   DNS_Domain_Name: essos.local
-|   DNS_Computer_Name: braavos.essos.local
-|   DNS_Tree_Name: essos.local
-|   Product_Version: 10.0.14393
-|_  System_Time: 2022-11-15T22:17:06+00:00
-| ssl-cert: Subject: commonName=braavos.essos.local
-| Issuer: commonName=braavos.essos.local
-| Public Key type: rsa
-| Public Key bits: 2048
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T23:47:59
-| Not valid after:  2023-05-15T23:47:59
-| MD5:   2150 783c f954 1990 8250 403f 8c3f 82c6
-| SHA-1: 4dc2 b581 3180 44f9 e9bb 27e7 0c8b 5132 9a11 5792
-|_ssl-date: 2022-11-15T22:17:46+00:00; 0s from scanner time.
-5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
-| ssl-cert: Subject: commonName=VAGRANT
-| Subject Alternative Name: DNS:VAGRANT, DNS:vagrant
-| Issuer: commonName=VAGRANT
-| Public Key type: rsa
-| Public Key bits: 4096
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2022-11-13T15:16:40
-| Not valid after:  2025-11-12T15:16:40
-| MD5:   be50 23a6 828e 075c 740b df88 6adf affe
-| SHA-1: 3ec0 c0b6 62b8 1c28 4eee 4cf2 4a23 4012 b2e2 2feb
-|_ssl-date: 2022-11-15T22:17:46+00:00; 0s from scanner time.
-| tls-alpn: 
-|   h2
-|_  http/1.1
+5985/tcp  open  http          syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
+5986/tcp  open  ssl/http      syn-ack ttl 128 Microsoft HTTPAPI httpd 2.0 
 49668/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
 49669/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
 49705/tcp open  msrpc         syn-ack ttl 128 Microsoft Windows RPC
-MAC Address: 08:00:27:23:C6:CE (Oracle VirtualBox virtual NIC)
-Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
 
 Host script results:
 |_clock-skew: mean: 59m59s, deviation: 2h49m42s, median: 0s
@@ -701,13 +437,6 @@ Host script results:
 |   08 00 27 23 c6 ce 00 00 00 00 00 00 00 00 00 00 00
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 |_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
-| p2p-conficker: 
-|   Checking for Conficker.C or higher...
-|   Check 1 (port 29164/tcp): CLEAN (Timeout)
-|   Check 2 (port 17189/tcp): CLEAN (Timeout)
-|   Check 3 (port 63738/udp): CLEAN (Timeout)
-|   Check 4 (port 23793/udp): CLEAN (Timeout)
-|_  0/4 checks are positive: Host is CLEAN or ports are blocked
 | smb-os-discovery: 
 |   OS: Windows Server 2016 Standard Evaluation 14393 (Windows Server 2016 Standard Evaluation 6.3)
 |   Computer name: braavos
@@ -724,9 +453,6 @@ Host script results:
 | smb2-security-mode: 
 |   2.02: 
 |_    Message signing enabled but not required
-| smb2-time: 
-|   date: 2022-11-15T22:17:06
-|_  start_date: 2022-11-15T19:08:23
 ```
 
 # Summary
@@ -845,8 +571,8 @@ Forced Log off Time: Not Set
 
 ### Accessible Shares
 
-We discovered some shares that are accessible as anonymous user.
-Also helped to identify which system is running ADCS
+We discovered some shares that are accessible as anonymous user.  
+Also helped to identify which system is running ADCS  
 
 ```bash
 192.168.56.22 [+] Enumerated shares
@@ -870,7 +596,7 @@ Also helped to identify which system is running ADCS
 
 ### Quick Wins
 
-I probably won't use them in later blog posts as they normally result in a complete domain takeover 
+I probably won't use them in later blog posts but let's see how it goes 
 
 ```bash
 # Zerologon
