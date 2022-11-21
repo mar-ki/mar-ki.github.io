@@ -6,15 +6,13 @@ tags: [goad]
 ---
 ![PWNING](https://raw.githubusercontent.com/Orange-Cyberdefense/GOAD/main/docs/img/GOAD.png)
 
-## Description
+[GOAD](https://github.com/Orange-Cyberdefense/GOAD) is a pentest active directory LAB project. The purpose of this lab is to give pentesters a vulnerable Active directory environment ready to use to practice usual attack techniques.  
 
-[GOAD](https://github.com/Orange-Cyberdefense/GOAD) is a pentest active directory LAB project. The purpose of this lab is to give pentesters a vulnerable Active directory environment ready to use to practice usual attack techniques.
-
-## Setup
+# Setup
 
 Setting up [GOAD](https://github.com/Orange-Cyberdefense/GOAD) is pretty straightforward as long as you have enough ressources and fulfill some basic prerequisites
 
-### Prerequisites
+## Prerequisites
 
 **Prerequisites - Software**
 * VirtualBox
@@ -25,7 +23,7 @@ Setting up [GOAD](https://github.com/Orange-Cyberdefense/GOAD) is pretty straigh
 * Space Required: 115GB (more if you want to take snapshots)
 * Memory:  ~11GB RAM (1GB per Machine)
 
-### Startup
+## Startup
 
 There are a couple of ways you can launch the environment from your command line. I will only showcase one of them. For more details visit [GOAD](https://github.com/Orange-Cyberdefense/GOAD)
 
@@ -46,7 +44,7 @@ sudo docker run -ti --rm --network host -h goadansible -v $(pwd):/goad -w /goad/
 
 Grab a coffee and wait till your systems are up and running.
 
-### Some Blueteam?
+## Some Blueteam?
 
 If you are interessted in following along the lab events you can enable the ELK stack.
 Btw. could also be used to check how noisy your methods are ;)
@@ -84,11 +82,11 @@ Install using docker
 sudo docker run -ti --rm --network host -h goadansible -v $(pwd):/goad -w /goad/ansible goadansible ansible-playbook elk.yml
 ```
 
-## Lab Overview
+# Lab Overview
 
 ![OVERVIEW](https://raw.githubusercontent.com/Orange-Cyberdefense/GOAD/main/docs/img/v2_overview.png)
 
-### Server
+## Server
 
 The Lab is running five virtual machines
 
@@ -98,24 +96,24 @@ The Lab is running five virtual machines
 -   **meereen** : DC03 running on Windows Server 2016 (with windefender enabled by default)
 -   **braavos** : SRV03 running on Windows Server 2016 (with windefender enabled by default)
 
-#### Domain : north.sevenkingdoms.local
+### Domain : north.sevenkingdoms.local
 
 -   **winterfell** : DC01
 -   **castelblack** : SRV02 : MSSQL / IIS
 
-#### Domain : sevenkingdoms.local
+### Domain : sevenkingdoms.local
 
 -   **kingslanding** : DC02
 -   **castelrock** : SRV01 (disabled due to resources reasons)
 
-#### Domain : essos.local
+### Domain : essos.local
 
 -   **braavos** : DC03
 -   **meeren** : SRV03 : MSSQL / ADCS
 
-## Vulnerabilities & Scenarios
+# Vulnerabilities & Scenarios
 
-### Users/Groups and associated vulnerabilites/scenarios
+## Users/Groups and associated vulnerabilites/scenarios
 
 **NORTH.SEVENKINGDOMS.LOCAL**
 
@@ -166,7 +164,7 @@ The Lab is running five virtual machines
 -   **DragonsFriends**: cross forest group
 -   **Spys**: cross forest group
 
-### Computers Users and group permissions
+## Computers Users and group permissions
 
 -   **SEVENKINGDOMS**
     -   DC01 : kingslanding.sevenkingdoms.local (Windows Server 2019) (SEVENKINGDOMS DC)

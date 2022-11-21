@@ -5,8 +5,6 @@ categories: [AD,GOAD]
 tags: [goad]
 ---
 
-# Description
-
 In this section we will go over some basic active directory enumeration methods which are also documented in the famous [Pentesting Active Directory Mind Map](https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2022_11.svg)  
 
 For setup instructions or a general overview visit [GOAD - Overview](https://blog.kindel.it/posts/GOAD-Overview/)
