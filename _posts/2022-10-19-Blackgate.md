@@ -2,7 +2,7 @@
 title: Blackgate 
 date: 2022-10-19 12:00:00
 categories: [OSCP,PG]
-tags: [redis]
+tags: [pg]
 ---
 
 # BlackGate 
